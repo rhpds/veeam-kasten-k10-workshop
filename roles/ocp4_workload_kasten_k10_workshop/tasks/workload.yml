@@ -50,7 +50,7 @@
 
   - name: Save access information
     when: r_kasten_route.resources | length > 0
-    agnosticd_user_info:
+    agnosticd.core.agnosticd_user_info:
       data:
         kasten_dashboard: "https://{{ r_kasten_route.resources[0].spec.host }}/k10/"
         kasten_storageclass: "{{ ocp4_workload_kasten_k10_storageclasses[0] | default('ocs-storagecluster-ceph-rbd-virtualization') }}"
@@ -104,7 +104,7 @@
 
     - name: Save AgnosticD user information for single user
       when: not ocp4_workload_kasten_k10_multi_user | bool
-      agnosticd_user_info:
+      agnosticd.core.agnosticd_user_info:
         data:
           kasten_backup_bucket_name: "{{ ocp4_workload_kasten_k10_objectbucket_name }}"
           kasten_backup_bucket_namespace: "{{ ocp4_workload_kasten_k10_objectbucket_namespace }}"
@@ -113,7 +113,7 @@
 
     - name: Save AgnosticD user information for multi user
       when: ocp4_workload_kasten_k10_multi_user | bool
-      agnosticd_user_info:
+      agnosticd.core.agnosticd_user_info:
         user: "{{ ocp4_workload_kasten_k10_objectbucket_user_base }}{{ user_number }}"
         data:
           kasten_dashboard: "https://{{ r_kasten_route.resources[0].spec.host }}/k10/"
