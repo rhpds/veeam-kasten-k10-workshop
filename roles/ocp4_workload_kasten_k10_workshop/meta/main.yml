@@ -1,0 +1,24 @@
+---
+galaxy_info:
+  role_name: ocp4_workload_kasten_k10_workshop
+  author: Your Name
+  description: Deploy Kasten K10 workshop on OpenShift 4
+  company: Your Company
+
+  license: GPL-2.0-or-later
+
+  min_ansible_version: "2.9"
+
+  platforms:
+    - name: EL
+      versions:
+        - "8"
+        - "9"
+
+  galaxy_tags:
+    - openshift
+    - workshop
+    - training
+    - kasten
+
+dependencies: []
