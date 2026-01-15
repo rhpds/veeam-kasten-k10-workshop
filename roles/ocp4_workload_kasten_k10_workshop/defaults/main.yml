@@ -10,18 +10,18 @@ ocp4_workload_kasten_k10_namespace: kasten-io
 
 # Channel to subscribe to
 ocp4_workload_kasten_k10_channel: stable
-ocp4_workload_kasten_k10_automatic_install_plan_approval: true
+ocp4_workload_kasten_k10_automatic_install_plan_approval: false
 
 # Kasten subscription. Valid values:
-# - k10-kasten-operator-paygo-rhmp
 # - k10-kasten-operator-rhmp
-# - k10-kasten-operator-term-rhmp
-ocp4_workload_kasten_k10_subscription: k10-kasten-operator-paygo-rhmp
+# Name of operator will change once moved from Red Hat Operator Marketplace catalog to Certified Operator catalog
+ocp4_workload_kasten_k10_subscription: k10-kasten-operator-rhmp
 
 # Starting CSV. Recommended to be left empty. If set match
 # to subscription.
-# ocp4_workload_kasten_k10_starting_csv: k10-kasten-operator-paygo-rhmp.v7.0.8
-ocp4_workload_kasten_k10_starting_csv: ""
+#ocp4_workload_kasten_k10_starting_csv: ""
+ocp4_workload_kasten_k10_starting_csv: k10-kasten-operator-rhmp.v8.0.15
+
 
 # -------------------------------------------------------------------
 # Deploy Kasten K10?
@@ -44,7 +44,7 @@ ocp4_workload_kasten_k10_authentication_type: openshift
 # -------------------------------------------------------------------
 # - Create one ObjectBucketRequest for each user
 # - Set up authorization for normal users to use K10
-ocp4_workload_kasten_k10_setup_demo: false
+ocp4_workload_kasten_k10_setup_demo: true
 
 # Annotate storage classes to support block mode
 #   k10.kasten.io/sc-supports-block-mode-exports=true
@@ -63,16 +63,19 @@ ocp4_workload_kasten_k10_volumesnapshotclasses:
 ocp4_workload_kasten_k10_objectbucket_name: kastenbackups
 ocp4_workload_kasten_k10_objectbucket_storage_class: openshift-storage.noobaa.io
 
-# Set up a single (cluster admin) user or multiple (regular) users
-ocp4_workload_kasten_k10_multi_user: false
 
+# Below is set in agnosticV
 # Single User
-ocp4_workload_kasten_k10_objectbucket_namespace: backuptarget
+# ocp4_workload_kasten_k10_objectbucket_namespace: backuptarget
+
+
+# Set up a single (cluster admin) user or multiple (regular) users
+# ocp4_workload_kasten_k10_multi_user: true
 
 # Multi User
-ocp4_workload_kasten_k10_num_users: 2
-ocp4_workload_kasten_k10_objectbucket_user_base: user
-ocp4_workload_kasten_k10_objectbucket_namespace_base: "backuptarget-{{ ocp4_workload_kasten_k10_objectbucket_user_base }}"
+#ocp4_workload_kasten_k10_num_users: 2
+#ocp4_workload_kasten_k10_objectbucket_user_base: user
+#ocp4_workload_kasten_k10_objectbucket_namespace_base: "backuptarget-{{ ocp4_workload_kasten_k10_objectbucket_user_base }}"
 
 # FROM MULTI-USER ROLE
 # In the future once bug https://issues.redhat.com/browse/CNV-38284 is in the product
